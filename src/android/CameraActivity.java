@@ -664,7 +664,64 @@ public class CameraActivity extends Fragment {
       canTakePicture = true;
     }
   }
+  
+  
+  
+  public void setFocusArea(final int pointX, final int pointY, final Camera.AutoFocusCallback callback) {
+    if (mCamera != null) {
 
+      mCamera.cancelAutoFocus();
+
+      Camera.Parameters parameters = mCamera.getParameters();
+
+      Rect focusRect = calculateTapArea(pointX, pointY, 1f, 300);
+      parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+      ///parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_MACRO);
+      parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 100)));
+
+      if (parameters.getMaxNumMeteringAreas() > 0) {
+        Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f, 500);
+        parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 100)));
+      }
+
+      try {
+        setCameraParameters(parameters);
+        mCamera.autoFocus(callback);
+      } catch (Exception e) {
+        Log.d(TAG, e.getMessage());
+        callback.onAutoFocus(false, this.mCamera);
+      }
+    }
+  }
+  
+  
+  
+private Rect calculateTapArea(float x, float y, float coefficient, int FOCUS_AREA_SIZE) {
+    
+    //int FOCUS_AREA_SIZE = 100;
+    //int FOCUS_AREA_SIZE = 300;
+    //int FOCUS_AREA_SIZE = 400;
+    int left = clamp(Float.valueOf((y / height) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+    int top = clamp(Float.valueOf((x / width) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+
+    return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
+}
+
+private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
+    int result;
+    if (Math.abs(touchCoordinateInCameraReper)+focusAreaSize/2>1000){
+        if (touchCoordinateInCameraReper>0){
+            result = 1000 - focusAreaSize/2;
+        } else {
+            result = -1000 + focusAreaSize/2;
+        }
+    } else{
+         result = touchCoordinateInCameraReper - focusAreaSize/2;
+    }
+    return result;
+}
+
+/*
   public void setFocusArea(final int pointX, final int pointY, final Camera.AutoFocusCallback callback) {
     if (mCamera != null) {
 
@@ -712,3 +769,4 @@ public class CameraActivity extends Fragment {
     );
   }
 }
+*/
