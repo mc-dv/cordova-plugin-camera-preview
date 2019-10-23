@@ -768,5 +768,7 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
       Math.round((y + 100) * 2000 / height - 1000)
     );
   }
-}
+  
 */
+
+}
