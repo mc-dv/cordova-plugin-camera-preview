@@ -706,11 +706,13 @@ private Rect calculateTapArea(float x, float y, float coefficient, int FOCUS_ARE
     //int FOCUS_AREA_SIZE = 100;
     //int FOCUS_AREA_SIZE = 300;
     //int FOCUS_AREA_SIZE = 400;
-    int left = clamp(Float.valueOf((y / height) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
-    int top = clamp(Float.valueOf((x / width) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+    int left = clamp(Float.valueOf((x / height) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+    int top = clamp(Float.valueOf((y / width) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+  
+    //int left = clamp(Float.valueOf((y / height) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+    //int top = clamp(Float.valueOf((x / width) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
 
-    return new Rect(top, left, top + FOCUS_AREA_SIZE, left + FOCUS_AREA_SIZE);
-      ///new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
+    return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
 }
 
 private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
