@@ -684,7 +684,7 @@ public class CameraActivity extends Fragment {
 
       if (parameters.getMaxNumMeteringAreas() > 0) {
         //Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f, 500);
-        Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f, 300);
+        Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f, 500);
         //parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 300)));
         parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 100)));
       }
@@ -709,7 +709,8 @@ private Rect calculateTapArea(float x, float y, float coefficient, int FOCUS_ARE
     int left = clamp(Float.valueOf((y / height) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
     int top = clamp(Float.valueOf((x / width) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
 
-    return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
+    return new Rect(top, left, top + FOCUS_AREA_SIZE, left + FOCUS_AREA_SIZE);
+      ///new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
 }
 
 private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
