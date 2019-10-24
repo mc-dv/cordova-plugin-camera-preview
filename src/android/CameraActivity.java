@@ -666,6 +666,9 @@ public class CameraActivity extends Fragment {
   }
   
   
+  /*
+  
+  // MC
   
   public void setFocusArea(final int pointX, final int pointY, final Camera.AutoFocusCallback callback) {
     if (mCamera != null) {
@@ -719,9 +722,10 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
          result = touchCoordinateInCameraReper - focusAreaSize/2;
     }
     return result;
-}
+}*/
 
-/*
+  /// ORIGINAL
+  
   public void setFocusArea(final int pointX, final int pointY, final Camera.AutoFocusCallback callback) {
     if (mCamera != null) {
 
@@ -731,11 +735,13 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
 
       Rect focusRect = calculateTapArea(pointX, pointY, 1f);
       parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-      parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 1000)));
+      //parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 1000)));
+      parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 250)));
 
       if (parameters.getMaxNumMeteringAreas() > 0) {
         Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f);
-        parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 1000)));
+        //parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 1000)));
+        parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 250)));
       }
 
       try {
@@ -769,6 +775,6 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
     );
   }
   
-*/
+///
 
 }
