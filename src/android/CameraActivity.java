@@ -710,7 +710,7 @@ private Rect calculateTapArea(float x, float y, float coefficient, int FOCUS_ARE
     int left = clamp(Float.valueOf((y / height) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
     int top = clamp(Float.valueOf((x / width) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
     
-    Log.d(TAG, "[calculateTapArea] y: " + y + ", height: " + height + ", x: " + x + ", width: "+width);
+    ////Log.d(TAG, "[calculateTapArea] y: " + y + ", height: " + height + ", x: " + x + ", width: "+width);
   
     return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
 }
