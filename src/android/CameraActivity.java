@@ -664,10 +664,7 @@ public class CameraActivity extends Fragment {
       canTakePicture = true;
     }
   }
-  
-  
-  /*
-  
+    
   // MC
   
   public void setFocusArea(final int pointX, final int pointY, final Camera.AutoFocusCallback callback) {
@@ -722,10 +719,11 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
          result = touchCoordinateInCameraReper - focusAreaSize/2;
     }
     return result;
-}*/
+}
 
   /// ORIGINAL
   
+  /*
   public void setFocusArea(final int pointX, final int pointY, final Camera.AutoFocusCallback callback) {
     if (mCamera != null) {
 
@@ -774,6 +772,7 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
       Math.round((y + 100) * 2000 / height - 1000)
     );
   }
+  */
   
 ///
 
