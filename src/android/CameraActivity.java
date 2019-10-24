@@ -677,11 +677,14 @@ public class CameraActivity extends Fragment {
       Rect focusRect = calculateTapArea(pointX, pointY, 1f, 300);
       parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
       ///parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_MACRO);
-      parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 100)));
+      
+      //parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 100)));
+      parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 500)));
 
       if (parameters.getMaxNumMeteringAreas() > 0) {
         Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f, 500);
-        parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 100)));
+        parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 500)));
+        //parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 100)));
       }
 
       try {
@@ -709,7 +712,7 @@ private Rect calculateTapArea(float x, float y, float coefficient, int FOCUS_ARE
 
 private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
     int result;
-    if (Math.abs(touchCoordinateInCameraReper)+focusAreaSize/2>1000){
+    /*if (Math.abs(touchCoordinateInCameraReper)+focusAreaSize/2>1000){
         if (touchCoordinateInCameraReper>0){
             result = 1000 - focusAreaSize/2;
         } else {
@@ -717,7 +720,10 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
         }
     } else{
          result = touchCoordinateInCameraReper - focusAreaSize/2;
-    }
+    }*/
+    if (result > 1000) return(1000);
+    if (result < -1000) return(-1000);
+  
     return result;
 }
 
