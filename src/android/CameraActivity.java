@@ -707,7 +707,7 @@ private Rect calculateTapArea(float x, float y, float coefficient, int FOCUS_ARE
     //int FOCUS_AREA_SIZE = 300;
     //int FOCUS_AREA_SIZE = 400;
   
-    Log.d(TAG, "[calculateTapArea] y: " + y + ", height: " + height + ", x: " + x + ", width: "+width);
+    ///Log.d(TAG, "[calculateTapArea] y: " + y + ", height: " + height + ", x: " + x + ", width: "+width);
   
     if (y > height) y = height;
     if (x > width) x = width;
