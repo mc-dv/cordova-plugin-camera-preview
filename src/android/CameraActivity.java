@@ -723,7 +723,7 @@ private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
     } else{
          result = touchCoordinateInCameraReper - focusAreaSize/2;
     }
-    return result
+    return result;
     /*touchCoordinateInCameraReper -= focusAreaSize/2;
     if (touchCoordinateInCameraReper > 1000-focusAreaSize) return(1000-focusAreaSize);
     if (touchCoordinateInCameraReper < -1000+focusAreaSize) return(-1000+focusAreaSize);
