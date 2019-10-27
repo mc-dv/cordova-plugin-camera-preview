@@ -273,7 +273,7 @@ public class CameraActivity extends Fragment {
     try {
     mCamera = Camera.open(defaultCameraId);
     } catch (RuntimeException e) {
-      return false; 
+      return; 
     }
 
     if (cameraParameters != null) {
@@ -287,7 +287,7 @@ public class CameraActivity extends Fragment {
       try {
        eventListener.onCameraStarted();
       } catch (RuntimeException | NullPointerException e) {
-        return false;
+        return;
       }
     } else {
       mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
