@@ -286,7 +286,7 @@ public class CameraActivity extends Fragment {
       mPreview.setCamera(mCamera, cameraCurrentlyLocked);
       try {
        eventListener.onCameraStarted();
-      } catch (RuntimeException | NullPointerException e) {
+      } catch (RuntimeException e) {
         return;
       }
     } else {
