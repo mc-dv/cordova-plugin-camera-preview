@@ -345,7 +345,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
         try {
           fragmentTransaction.commit();
         } catch(IllegalStateException e) {
-          return false;
+          return;
         }
         
       }
