@@ -269,8 +269,12 @@ public class CameraActivity extends Fragment {
   @Override
   public void onResume() {
     super.onResume();
-
+    
+    try {
     mCamera = Camera.open(defaultCameraId);
+    } catch (RuntimeException e) {
+      return false; 
+    }
 
     if (cameraParameters != null) {
       mCamera.setParameters(cameraParameters);
@@ -282,7 +286,7 @@ public class CameraActivity extends Fragment {
       mPreview.setCamera(mCamera, cameraCurrentlyLocked);
       try {
        eventListener.onCameraStarted();
-      } catch (RuntimeException | NullPointerException) {
+      } catch (RuntimeException | NullPointerException e) {
         return false;
       }
     } else {
