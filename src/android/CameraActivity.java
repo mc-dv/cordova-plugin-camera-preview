@@ -649,7 +649,12 @@ public class CameraActivity extends Fragment {
 
       new Thread() {
         public void run() {
-          Camera.Parameters params = mCamera.getParameters();
+          
+          try {
+           Camera.Parameters params = mCamera.getParameters();
+          } catch (RuntimeException e) {
+           return;
+          }
 
           Camera.Size size = getOptimalPictureSize(width, height, params.getPreviewSize(), params.getSupportedPictureSizes());
           params.setPictureSize(size.width, size.height);
