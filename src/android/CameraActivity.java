@@ -270,7 +270,7 @@ public class CameraActivity extends Fragment {
   public void onResume() {
     super.onResume();
     
-    try {
+    try { /// MC-CATCH
     mCamera = Camera.open(defaultCameraId);
     } catch (RuntimeException e) {
       return; 
@@ -284,7 +284,7 @@ public class CameraActivity extends Fragment {
 
     if(mPreview.mPreviewSize == null){
       mPreview.setCamera(mCamera, cameraCurrentlyLocked);
-      try {
+      try { // MC-CATCH
        eventListener.onCameraStarted();
       } catch (RuntimeException e) {
         return;
@@ -650,7 +650,7 @@ public class CameraActivity extends Fragment {
       new Thread() {
         public void run() {
           
-          try {
+          try { //MC-CATCH
            Camera.Parameters params = mCamera.getParameters();
           } catch (RuntimeException e) {
            return;
