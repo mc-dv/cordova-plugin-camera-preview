@@ -273,7 +273,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
       @Override
       public void run() {
 
-
         //create or update the layout params for the container view
         FrameLayout containerView = (FrameLayout)cordova.getActivity().findViewById(containerViewId);
         if(containerView == null){
@@ -342,9 +341,18 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
         FragmentManager fragmentManager = cordova.getActivity().getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(containerView.getId(), fragment);
-        try {
+        
+        try { // MC-CATCH
           fragmentTransaction.commit();
         } catch(IllegalStateException e) {
+          
+          try { // MC-CATCH
+            Thread.sleep(500);
+            fragmentTransaction.commit();
+          } catch(IllegalStateException e) {
+            return;
+          }
+          
           return;
         }
         
