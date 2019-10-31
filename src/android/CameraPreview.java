@@ -349,7 +349,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
           try { // MC-CATCH
             Thread.sleep(500);
             fragmentTransaction.commit();
-          } catch(IllegalStateException e) {
+          } catch(IllegalStateException e2) {
             return;
           }
           
