@@ -650,10 +650,11 @@ public class CameraActivity extends Fragment {
       new Thread() {
         public void run() {
           
-          Camera.Parameters params
+          Camera.Parameters params;
           
           try { //MC-CATCH
-           Camera.Parameters params = mCamera.getParameters();
+           ///Camera.Parameters params = mCamera.getParameters();
+            params = mCamera.getParameters();
           } catch (RuntimeException e) {
            return;
           }
