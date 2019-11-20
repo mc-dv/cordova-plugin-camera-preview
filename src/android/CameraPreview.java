@@ -283,7 +283,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
           cordova.getActivity().addContentView(containerView, containerLayoutParams);
         }
         //display camera bellow the webview
-        /*if(toBack){
+        if(toBack){
 
           View view = webView.getView();
           ViewParent rootParent = containerView.getParent();
@@ -317,7 +317,9 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
           containerView.setAlpha(opacity);
           containerView.bringToFront();
 
-        }*/
+        }
+        
+        /*
         if(toBack){
 
           //webView.getView().setBackgroundColor(0x00000000);
@@ -336,6 +338,7 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
           containerView.bringToFront();
 
         }
+        */
 
         //add the fragment to the container
         FragmentManager fragmentManager = cordova.getActivity().getFragmentManager();
