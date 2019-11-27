@@ -116,7 +116,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
       displayOrientation = (info.orientation - degrees + 360) % 360;
     }
     
-    displayOrientation = 0; /// [MC] Orientation Lock
+    displayOrientation = 90; /// [MC] Orientation Lock
 
     Log.d(TAG, "screen is rotated " + degrees + "deg from natural");
     Log.d(TAG, (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT ? "front" : "back") + " camera is oriented -" + info.orientation + "deg from natural");
